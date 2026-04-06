@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Debug & Fix - Drone Camp</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        color: #fff;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 10px;
+        color: #00eaff;
+        font-size: 2em;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 30px;
+      }
+
+      .section {
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(0, 234, 255, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .section h2 {
+        color: #00eaff;
+        margin-bottom: 15px;
+        font-size: 1.2em;
+        border-bottom: 2px solid rgba(0, 234, 255, 0.3);
+        padding-bottom: 10px;
+      }
+
+      .test-box {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 234, 255, 0.3);
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+
+      button {
+        background: linear-gradient(135deg, #00eaff 0%, #00d4ff 100%);
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        margin: 5px;
+        transition: all 0.3s;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 234, 255, 0.4);
+      }
+
+      .output {
+        background: #000;
+        border: 1px solid #00eaff;
+        color: #00ff00;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 0.9em;
+        max-height: 400px;
+        overflow-y: auto;
+        margin-top: 10px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      .success {
+        background: rgba(0, 255, 100, 0.1);
+        border: 2px solid #00ff64;
+        color: #00ff64;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .error {
+        background: rgba(255, 0, 0, 0.1);
+        border: 2px solid #ff0000;
+        color: #ff6b6b;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .warning {
+        background: rgba(255, 165, 0, 0.1);
+        border: 2px solid #ffa500;
+        color: #ffa500;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        background: rgba(0, 234, 255, 0.1);
+        border: 1px solid rgba(0, 234, 255, 0.3);
+        color: #fff;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #00eaff;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #00eaff;
+        font-weight: 600;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔧 Form Debug Tool</h1>
+      <p class="subtitle">Find exactly why data isn't appearing</p>
+
+      <!-- Step 1: Check Console Output -->
+      <div class="section">
+        <h2>📌 Step 1: Check What's Happening</h2>
+        <div class="test-box">
+          <p style="margin-bottom: 15px">
+            Open your registration page and submit the form, then click button
+            below:
+          </p>
+          <button onclick="checkConsoleOutput()">
+            🔍 Check Console Messages
+          </button>
+          <div id="consoleOutput"></div>
+        </div>
+      </div>
+
+      <!-- Step 2: Direct Form Test -->
+      <div class="section">
+        <h2>🧪 Step 2: Send Test Data Directly</h2>
+        <div class="test-box">
+          <p style="margin-bottom: 15px">
+            This will send a real test submission to your Google Form:
+          </p>
+          <button onclick="sendTestData()">🚀 Send Test to Google Form</button>
+          <div id="testOutput"></div>
+        </div>
+      </div>
+
+      <!-- Step 3: Verify Entry IDs -->
+      <div class="section">
+        <h2>🔑 Step 3: Update Entry IDs (if needed)</h2>
+        <div class="test-box">
+          <p style="margin-bottom: 15px">
+            Your current entry IDs in script.js:
+          </p>
+          <div class="output">
+            entry.1697827492 (Full Name) entry.1957187287 (Email)
+            entry.873908866 (Phone) entry.1845421633 (Age) entry.1524111384
+            (Guardian) entry.720523704 (Batch) entry.1384458197 (School)
+          </div>
+
+          <p style="margin-top: 20px; margin-bottom: 15px">
+            <strong>Enter your correct entry IDs (leave blank to skip):</strong>
+          </p>
+
+          <label>Full Name:</label>
+          <input type="text" id="id1" placeholder="e.g., 1697827492" />
+
+          <label>Email:</label>
+          <input type="text" id="id2" placeholder="e.g., 1957187287" />
+
+          <label>Phone:</label>
+          <input type="text" id="id3" placeholder="e.g., 873908866" />
+
+          <label>Age:</label>
+          <input type="text" id="id4" placeholder="e.g., 1845421633" />
+
+          <label>Guardian:</label>
+          <input type="text" id="id5" placeholder="e.g., 1524111384" />
+
+          <label>Batch:</label>
+          <input type="text" id="id6" placeholder="e.g., 720523704" />
+
+          <label>School:</label>
+          <input type="text" id="id7" placeholder="e.g., 1384458197" />
+
+          <button onclick="testWithCustomIds()">✅ Test with These IDs</button>
+          <div id="customTestOutput"></div>
+        </div>
+      </div>
+
+      <!-- Step 4: Get Correct IDs -->
+      <div class="section">
+        <h2>📋 Step 4: Find Correct Entry IDs from Your Form</h2>
+        <div class="test-box">
+          <p>
+            <strong>Option A - Using Browser Inspect (Best Method):</strong>
+          </p>
+          <ol style="margin-left: 20px; margin-top: 10px">
+            <li>
+              Go to your Google Form:
+              <a
+                href="https://forms.gle/9StjmPjZVzbD2sqJ7"
+                target="_blank"
+                style="color: #00eaff"
+                >https://forms.gle/9StjmPjZVzbD2sqJ7</a
+              >
+            </li>
+            <li>
+              Add <strong>/edit</strong> to the URL (make it:
+              .../edit?usp=sharing)
+            </li>
+            <li>Right-click on "Full Name" field → Click "Inspect"</li>
+            <li>
+              Look for:
+              <code style="background: #000; padding: 2px 5px"
+                >name="entry.XXXXXXX"</code
+              >
+            </li>
+            <li>Copy those numbers and paste here above</li>
+            <li>Repeat for each field</li>
+          </ol>
+
+          <p style="margin-top: 20px">
+            <strong>Option B - Using Page Source (Alternative):</strong>
+          </p>
+          <ol style="margin-left: 20px; margin-top: 10px">
+            <li>Go to your Google Form (normal link)</li>
+            <li>Press <strong>Ctrl+U</strong> to view page source</li>
+            <li>
+              Press <strong>Ctrl+F</strong> and search for: <code>entry.</code>
+            </li>
+            <li>You'll see all entry IDs - match them to fields</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 5: Quick Links -->
+      <div class="section">
+        <h2>🔗 Quick Links</h2>
+        <div class="test-box">
+          <p style="margin-bottom: 15px">
+            <a
+              href="https://forms.gle/9StjmPjZVzbD2sqJ7"
+              target="_blank"
+              style="color: #00eaff; text-decoration: none; margin-right: 20px">
+              📋 Open Google Form
+            </a>
+            <a
+              href="https://docs.google.com/spreadsheets/d/19okXL3SKm2-gCBe8HiLzfTNWEYookvL42NY4O_ANzBc/"
+              target="_blank"
+              style="color: #00eaff; text-decoration: none; margin-right: 20px">
+              📊 Open Google Sheet
+            </a>
+            <a
+              href="registration.html"
+              style="color: #00eaff; text-decoration: none">
+              📝 Go to Registration Form
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function checkConsoleOutput() {
+        let msg = "📊 FORM SUBMISSION VERIFICATION\n";
+        msg += "================================\n\n";
+
+        const localData = JSON.parse(
+          localStorage.getItem("registrations") || "[]",
+        );
+        msg += `✅ Local Submissions Saved: ${localData.length}\n`;
+
+        if (localData.length > 0) {
+          const last = localData[localData.length - 1];
+          msg += "\n📝 Last Submission:\n";
+          for (let key in last) {
+            msg += `  ${key}: ${last[key]}\n`;
+          }
+        }
+
+        msg += "\n💡 NEXT STEPS:\n";
+        msg += "1. Wait 60 seconds for Google Sheet to sync\n";
+        msg += "2. Open Google Sheet link\n";
+        msg += "3. Check 'Form Responses 1' tab\n";
+        msg += "4. If data still missing, try Step 3 above\n";
+
+        document.getElementById("consoleOutput").innerHTML =
+          `<div class="output">${msg}</div>`;
+      }
+
+      function sendTestData() {
+        const output = document.getElementById("testOutput");
+        output.innerHTML = '<div class="output">Sending test data...</div>';
+
+        const formURL =
+          "https://docs.google.com/forms/d/e/1FAIpQLSeOz70Vr-blHr4ueCsVGCRsxuo30YsyDU7P-lEbPdTSDlweTA/formResponse";
+        const formData = new FormData();
+
+        // Current entry IDs
+        formData.append(
+          "entry.1697827492",
+          "DEBUG TEST - " + new Date().toLocaleTimeString(),
+        );
+        formData.append("entry.1957187287", "debug@test.com");
+        formData.append("entry.873908866", "9876543210");
+        formData.append("entry.1845421633", "12");
+        formData.append("entry.1524111384", "Test Parent");
+        formData.append("entry.720523704", "B1");
+        formData.append("entry.1384458197", "Test School");
+
+        fetch(formURL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+        })
+          .then(() => {
+            output.innerHTML = `
+          <div class="success" style="margin-top: 15px;">
+            ✅ Test data sent!<br>
+            <br>
+            <strong>Next Steps:</strong><br>
+            1. Wait 60 seconds<br>
+            2. Open your Google Sheet: <a href="https://docs.google.com/spreadsheets/d/19okXL3SKm2-gCBe8HiLzfTNWEYookvL42NY4O_ANzBc/" target="_blank" style="color: #00ff64;">📊 Click Here</a><br>
+            3. Look for row with "DEBUG TEST"<br>
+            <br>
+            <strong>Did you see it?</strong><br>
+            YES → Everything works! Try real form.<br>
+            NO → Entry IDs might be wrong (use Step 3 above)
+          </div>
+        `;
+          })
+          .catch((err) => {
+            output.innerHTML = `
+          <div class="error" style="margin-top: 15px;">
+            Error: ${err.message}<br>
+            This is normal for no-cors. Data may still have been sent.
+          </div>
+        `;
+          });
+      }
+
+      function testWithCustomIds() {
+        const ids = {
+          name: document.getElementById("id1").value || "1697827492",
+          email: document.getElementById("id2").value || "1957187287",
+          phone: document.getElementById("id3").value || "873908866",
+          age: document.getElementById("id4").value || "1845421633",
+          guardian: document.getElementById("id5").value || "1524111384",
+          batch: document.getElementById("id6").value || "720523704",
+          school: document.getElementById("id7").value || "1384458197",
+        };
+
+        const output = document.getElementById("customTestOutput");
+        output.innerHTML =
+          '<div class="output">Testing with custom IDs...</div>';
+
+        const formURL =
+          "https://docs.google.com/forms/d/e/1FAIpQLSeOz70Vr-blHr4ueCsVGCRsxuo30YsyDU7P-lEbPdTSDlweTA/formResponse";
+        const formData = new FormData();
+
+        formData.append(
+          "entry." + ids.name,
+          "CUSTOM TEST - " + new Date().toLocaleTimeString(),
+        );
+        formData.append("entry." + ids.email, "custom@test.com");
+        formData.append("entry." + ids.phone, "9876543210");
+        formData.append("entry." + ids.age, "12");
+        formData.append("entry." + ids.guardian, "Test Parent");
+        formData.append("entry." + ids.batch, "B1");
+        formData.append("entry." + ids.school, "Test School");
+
+        let msg = "🧪 Testing with IDs:\n\n";
+        for (let key in ids) {
+          msg += `${key}: entry.${ids[key]}\n`;
+        }
+        msg += "\n⏳ Sending...\n";
+
+        output.innerHTML = `<div class="output">${msg}</div>`;
+
+        fetch(formURL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+        })
+          .then(() => {
+            output.innerHTML = `
+          <div class="success" style="margin-top: 15px;">
+            ✅ Test sent with custom IDs!<br>
+            <br>
+            <strong>Check Google Sheet in 60 seconds</strong><br>
+            If data appears, use these IDs to update script.js!
+          </div>
+        `;
+          })
+          .catch((err) => {
+            output.innerHTML = `<div class="warning" style="margin-top: 15px;">⚠️ ${err.message}</div>`;
+          });
+      }
+    </script>
+  </body>
+</html>

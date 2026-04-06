@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Drone Registration</title>
+  </head>
+
+  <body>
+    <form id="droneForm">
+      <input id="name" placeholder="Full Name" required /><br /><br />
+      <input id="email" placeholder="Email" required /><br /><br />
+      <input id="phone" placeholder="Phone" required /><br /><br />
+
+      <select id="age" required>
+        <option>9 years</option>
+        <option>10 years</option>
+        <option>11 years</option>
+        <option>12 years</option>
+        <option>13 years</option>
+        <option>14 years</option>
+        <option>15 years</option>
+        <option>16 years</option></select
+      ><br /><br />
+
+      <input id="parentName" placeholder="Parent Name" required /><br /><br />
+
+      <select id="batch" required>
+        <option>B1: 9:00 AM - 11:00 AM</option>
+        <option>B2: 4:00 PM - 6:00 PM</option></select
+      ><br /><br />
+
+      <input id="school" placeholder="School Name" required /><br /><br />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("droneForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const url =
+            "https://docs.google.com/forms/d/e/1FAIpQLSeOz70Vr-blHr4ueCsVGCRsxuo30YsyDU7P-lEbPdTSDlweTA/formResponse";
+
+          const data = new URLSearchParams({
+            "entry.1697827492": document.getElementById("name").value,
+            "entry.1957187287": document.getElementById("email").value,
+            "entry.873908866": document.getElementById("phone").value,
+            "entry.1845421633": document.getElementById("age").value,
+            "entry.1524111384": document.getElementById("parentName").value,
+            "entry.720523704": document.getElementById("batch").value,
+            "entry.1384458197": document.getElementById("school").value,
+          });
+
+          fetch(url, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: data.toString(),
+          });
+
+          alert("Registration Successful!");
+          document.getElementById("droneForm").reset();
+        });
+    </script>
+  </body>
+</html>

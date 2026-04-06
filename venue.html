@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venue - Drone Camp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span
+            class="logo-text"
+            onclick="
+              window.open('https://sparkle-bot.vercel.app', '_blank');
+              return false;
+            ">
+            <img src="logo.jpg" alt="Logo" class="logo-img" />
+          </span>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="events.html" class="nav-link">Events</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="venue.html" class="nav-link">Venue</a></li>
+          <li>
+            <a
+              href="javascript:void(0)"
+              onclick="openSafetyModal()"
+              class="nav-link"
+              >🛡️ Safety</a
+            >
+          </li>
+        </ul>
+
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="page-section">
+      <div class="page-header">
+        <h1 class="page-title">📍 Camp Venue</h1>
+        <p class="page-subtitle">Where the Magic Happens!</p>
+      </div>
+
+      <!-- Venue Info Cards -->
+      <div class="events-grid">
+        <div class="event-card">
+          <h3>🏫 Venue Name</h3>
+          <p
+            style="
+              font-size: 1.1rem;
+              color: var(--neon-blue);
+              font-weight: 700;
+            ">
+            Eklavya Sparklebots Robotics Centre
+          </p>
+          <p style="color: var(--text-gray)">Pune, Maharashtra</p>
+        </div>
+
+        <div class="event-card">
+          <h3>📍 Location</h3>
+          <p><strong>Road:</strong> DP Road</p>
+          <p><strong>Area:</strong> Kothrud</p>
+          <p><strong>State:</strong> Maharashtra</p>
+        </div>
+
+        <div class="event-card">
+          <h3>🚍 Transportation</h3>
+          <p>
+            Easily accessible by local buses and auto-rickshaws. Good parking
+            facilities available.
+          </p>
+        </div>
+      </div>
+
+      <!-- Complete Address -->
+      <div class="info-section">
+        <h3>📮 Complete Address</h3>
+        <p style="font-size: 1.1rem; line-height: 2">
+          <strong
+            >Eklavya Sparklebots Robotics Centre , DP Road, Kothrud,
+            Pune</strong
+          ><br />
+          Near Ekalavya Shikshan Sanstha<br />
+          Jijai Nagar, Kothrud<br />
+          Pune, Maharashtra – 411038<br />
+          India
+        </p>
+        <p style="margin-top: 1.5rem">
+          <strong>📞 Contact for Directions:</strong> Available during
+          registration
+        </p>
+        <div
+          style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap">
+          <button
+            onclick="
+              window.open(
+                'https://www.google.com/maps/search/Sparklebots+Robotics+Innovation+and+Research+Labs,+Narmada+Heights,+DP+Rd,+Gananjay+Society,+Guruganesh+Nagar,+Kothrud,+Pune,+Maharashtra+411038',
+                '_blank',
+              )
+            "
+            class="btn btn-primary">
+            🗺️ Get Directions
+          </button>
+          <button onclick="openWhatsApp()" class="btn btn-secondary">
+            💬 Ask Questions
+          </button>
+        </div>
+      </div>
+
+      <!-- Sparklebots Head Office -->
+      <div
+        class="info-section"
+        style="
+          background: rgba(0, 234, 255, 0.08);
+          border-left: 4px solid var(--neon-blue);
+        ">
+        <h3>🏢 Sparklebots HO (Head Office)</h3>
+        <p style="font-size: 1.1rem; line-height: 2">
+          <strong>A-102, First Floor, Narmada Heights</strong><br />
+          GuruGaneshnagar, DP Road<br />
+          Kothrud, Pune<br />
+          Maharashtra, India
+        </p>
+        <p style="margin-top: 1.5rem">
+          <strong
+            >For more information about Sparklebots and our programs:</strong
+          >
+        </p>
+        <div
+          style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap">
+          <button
+            onclick="
+              window.open(
+                'https://www.google.com/maps/search/Sparklebots+Robotics+Innovation+and+Research+Labs,+Narmada+Heights,+DP+Rd,+Gananjay+Society,+Guruganesh+Nagar,+Kothrud,+Pune,+Maharashtra+411038',
+                '_blank',
+              )
+            "
+            class="btn btn-primary">
+            🗺️ Get Direction to Office
+          </button>
+          <a
+            href="https://sparkle-bot.vercel.app"
+            target="_blank"
+            class="btn btn-secondary"
+            style="
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            ">
+            🌐 Visit Website
+          </a>
+        </div>
+      </div>
+
+      <!-- Why This Venue? -->
+      <div class="info-section">
+        <h3>✨ Why Sparklebots Robotics Centre?</h3>
+        <p>
+          ✅ <strong>Large Open Space:</strong> Spacious grounds perfect for
+          safe drone flying
+        </p>
+        <p>
+          ✅ <strong>Prime Location:</strong> Central location in Pune for easy
+          access
+        </p>
+        <p>
+          ✅ <strong>Modern Facilities:</strong> Equipped with all necessary
+          amenities
+        </p>
+        <p>
+          ✅ <strong>Safe Environment:</strong> Secure, supervised area for
+          participants
+        </p>
+        <p>
+          ✅ <strong>Parking Available:</strong> Convenient parking for parents
+          dropping kids
+        </p>
+        <p>
+          ✅ <strong>Weather Protection:</strong> Indoor facilities as backup
+          for bad weather
+        </p>
+      </div>
+
+      <!-- Directions & Access -->
+      <div class="info-section">
+        <h3>🗺️ How to Reach</h3>
+        <p>
+          <strong>By Auto-rickshaw/Taxi:</strong> Ask to go to Eklavya School
+          near Jijai Nagar, Kothrud, Pune
+        </p>
+        <p>
+          <strong>By Bus:</strong> PMPML buses ply regularly to Kothrud area.
+          Get off at Ekalavya Shikshan Sanstha
+        </p>
+        <p>
+          <strong>By Personal Vehicle:</strong> Ample parking available at the
+          school premises
+        </p>
+        <p>
+          <strong>Landmarks:</strong> Near Ekalavya Shikshan Sanstha on DP Road
+        </p>
+      </div>
+
+      <!-- Parking Info -->
+      <div class="info-section">
+        <h3>🅿️ Parking & Facilities</h3>
+        <p><strong>Parking:</strong> Free parking available for vehicles</p>
+        <p>
+          <strong>Waiting Area:</strong> Comfortable waiting room for parents
+        </p>
+        <p>
+          <strong>Refreshments:</strong> Drinking water and basic refreshments
+          available
+        </p>
+        <p><strong>Restrooms:</strong> Clean, well-maintained facilities</p>
+        <p><strong>First Aid:</strong> Medical support available on campus</p>
+      </div>
+
+      <!-- What to Bring -->
+      <div class="info-section">
+        <h3>🎒 What to Bring</h3>
+        <p>✅ Comfortable clothes and shoes (sneakers recommended)</p>
+        <p>✅ A notebook and pen to take notes</p>
+        <p>✅ Water bottle to stay hydrated</p>
+        <p>✅ Hat/sunscreen for outdoor activities</p>
+        <p>✅ Phone/camera to capture moments (optional)</p>
+        <p>✅ Enthusiasm and excitement to learn!</p>
+      </div>
+
+      <!-- COVID/Safety Info -->
+      <div class="info-section">
+        <h3>🛡️ Safety Protocols</h3>
+        <p>✅ All activities supervised by trained professionals</p>
+        <p>✅ Regular sanitization of equipment and areas</p>
+        <p>✅ First aid support available on-site</p>
+        <p>✅ All participants wear safety gear when flying</p>
+        <p>✅ Safe distance maintained during activities</p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="info-section">
+        <h3>❓ FAQ About Venue</h3>
+        <p><strong>Q: Is parking free?</strong></p>
+        <p>A: Yes, free parking is available for all vehicles.</p>
+
+        <p style="margin-top: 1rem">
+          <strong>Q: Can parents stay during the camp?</strong>
+        </p>
+        <p>A: Yes, there's a comfortable waiting area for parents.</p>
+
+        <p style="margin-top: 1rem"><strong>Q: What if it rains?</strong></p>
+        <p>A: We have indoor facilities and weather backup arrangements.</p>
+
+        <p style="margin-top: 1rem">
+          <strong>Q: Is the venue safe for kids?</strong>
+        </p>
+        <p>
+          A: Absolutely! The venue is secure with trained supervision
+          throughout.
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="cta-buttons" style="margin-top: 3rem">
+        <a href="registration.html" class="btn btn-primary"
+          >Register & Confirm Venue</a
+        >
+        <a href="events.html" class="btn btn-secondary">Back to Events</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2026
+        <a
+          href="javascript:void(0)"
+          onclick="window.open('https://sparkle-bot.vercel.app', '_blank')"
+          class="sparkle-link"
+          >Sparklebots</a
+        >
+        - Drone Camp
+      </p>
+      <p>🏫 Eklavya Sparklebots Robotics Centre , Kothrud, Pune</p>
+      <div style="margin-top: 0.5rem; font-size: 0.85rem">
+        <p>📞 Contact: 8446630300 | 8446767555 | 8446767999</p>
+        <p>📧 Email: hellosparklebots.com</p>
+      </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+      <a href="registration.html" class="fab fab-register" title="Register Now">
+        <span class="fab-icon">📝</span>
+        <span class="fab-label">Register</span>
+      </a>
+      <button
+        class="fab fab-whatsapp"
+        onclick="openWhatsApp()"
+        title="Chat on WhatsApp">
+        <span class="fab-icon">💬</span>
+        <span class="fab-label">WhatsApp</span>
+      </button>
+    </div>
+
+    <!-- Safety Protocols Modal -->
+    <div id="safetyModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">🛡️ Safety Protocols</h2>
+          <button class="modal-close" onclick="closeSafetyModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            ✅
+            <strong>All activities supervised by trained professionals</strong>
+          </p>
+          <p>
+            Our experienced trainers ensure complete supervision throughout all
+            drone flying activities.
+          </p>
+
+          <p>✅ <strong>Regular sanitization of equipment and areas</strong></p>
+          <p>
+            All drones and equipment are thoroughly sanitized before and after
+            use to maintain hygiene standards.
+          </p>
+
+          <p>✅ <strong>First aid support available on-site</strong></p>
+          <p>
+            Certified first aid personnel are present at all times during the
+            camp.
+          </p>
+
+          <p>
+            ✅ <strong>All participants wear safety gear when flying</strong>
+          </p>
+          <p>
+            Safety helmets and protective gear are mandatory for all
+            participants during drone operations.
+          </p>
+
+          <p>✅ <strong>Safe distance maintained during activities</strong></p>
+          <p>
+            All activities are conducted in designated safe zones with proper
+            distance maintained from spectators.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button onclick="openWhatsApp()">💬 Ask Questions</button>
+          <button onclick="closeSafetyModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Camp Info Modal -->
+    <div id="campInfoModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">🚁 Camp Information</h2>
+          <button class="modal-close" onclick="closeCampInfoModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>📅 Duration:</strong> 5 Days (20-24 April 2026)</p>
+          <p>
+            Intensive hands-on training program for young drone enthusiasts.
+          </p>
+
+          <p><strong>⏰ Daily Duration:</strong> 2 Hours per Day</p>
+          <p>Flexible batch timings available:</p>
+          <p>• Batch 1: 9:00 AM - 11:00 AM</p>
+          <p>• Batch 2: 4:00 PM - 6:00 PM</p>
+
+          <p><strong>💰 Registration Fee:</strong> ₹500 (Pay to scanner )</p>
+
+          <p><strong>👥 Batch Size:</strong> Maximum 20 students per batch</p>
+          <p>Trainer-student ratio of 1:8 for personalized attention.</p>
+
+          <p><strong>👥 Age Group:</strong> 8-16 Years</p>
+          <p>
+            Suitable for all age groups within this range, no prior experience
+            required.
+          </p>
+
+          <p>
+            <strong>📑 Venue:</strong> Eklavya Sparklebots Robotics Centre , DP
+            Road, Kothrud, Pune
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeCampInfoModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert Certificate Modal -->
+    <div id="certificateModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">🏆 Expert Certificate</h2>
+          <button class="modal-close" onclick="closeCertificateModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>📜 Professional Recognition</strong></p>
+          <p>
+            After successfully completing the 5-day camp, every participant
+            receives an official drone flying certificate from expert trainers.
+          </p>
+
+          <p><strong>✅ Certificate Benefits</strong></p>
+          <p>
+            This certificate is recognized and can be added to your portfolio,
+            resume, or academic profile.
+          </p>
+
+          <p><strong>🎓 Proof of Achievement</strong></p>
+          <p>The certificate validates your:</p>
+          <p>• Basic drone flying skills and knowledge</p>
+          <p>• Safety protocol understanding</p>
+          <p>• Technical proficiency with modern drones</p>
+          <p>• Completion of structured training program</p>
+
+          <p><strong>👴‍👼 Issued by Experts</strong></p>
+          <p>
+            All certificates are signed and issued by our certified professional
+            trainers with years of industry experience.
+          </p>
+
+          <p><strong>🌟 Career Building</strong></p>
+          <p>This certification can help you in:</p>
+          <p>• School/college projects and competitions</p>
+
+          <p>• Building a foundation for a career in drone technology</p>
+          <p>• Demonstrating commitment to learning new skills</p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeCertificateModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert Trainers Modal -->
+    <div id="trainersModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">👨‍🏫 Expert Trainers</h2>
+          <button class="modal-close" onclick="closeTrainersModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>👨‍🎓 Professional & Experienced</strong></p>
+          <p>
+            Our trainers have years of industry experience in drone technology
+            and aviation.
+          </p>
+
+          <p><strong>🎯 Specialized Training</strong></p>
+          <p>
+            Each trainer is specialized in different aspects of drone flying:
+          </p>
+          <p>• Flight dynamics and control</p>
+          <p>• Safety protocols and emergency procedures</p>
+          <p>• Advanced maneuvers and competitions</p>
+          <p>• Technical knowledge and maintenance</p>
+
+          <p><strong>🏆 Certified Professionals</strong></p>
+          <p>
+            All trainers are certified in drone operations and emergency
+            response.
+          </p>
+
+          <p><strong>👥 Personalized Attention</strong></p>
+          <p>
+            1:8 trainer-to-student ratio ensures each participant gets dedicated
+            guidance.
+          </p>
+
+          <p><strong>💡 Teaching Excellence</strong></p>
+          <p>
+            Passionate educators dedicated to making learning fun and memorable
+            for young pilots.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeTrainersModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hands-On Experience Modal -->
+    <div id="handsOnModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">✋ Hands-On Experience</h2>
+          <button class="modal-close" onclick="closeHandsOnModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>🚁 Extensive Flight Time</strong></p>
+          <p>
+            Every participant gets real hands-on flying time with modern drones
+            - not just theory!
+          </p>
+
+          <p><strong>🎮 Learn by Doing</strong></p>
+          <p>Progressive training from basic controls to advanced maneuvers:</p>
+          <p>• Hover and basic movement</p>
+          <p>• Forward, backward, and lateral flight</p>
+          <p>• Advanced tricks and stunts</p>
+          <p>• Precision flying and competitions</p>
+
+          <p><strong>🏁 Live Competitions</strong></p>
+          <p>
+            Participate in exciting daily challenges, obstacle courses, and
+            drone racing events.
+          </p>
+
+          <p><strong>📱 Modern Equipment</strong></p>
+          <p>
+            Fly cutting-edge drones with cameras, stabilizers, and advanced
+            sensors.
+          </p>
+
+          <p><strong>🎓 Practical Knowledge</strong></p>
+          <p>
+            Learn maintenance, troubleshooting, and technical aspects through
+            hands-on practice.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeHandsOnModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ages 8-16 Modal -->
+    <div id="agesModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">👥 Ages 8-16 | Family Friendly</h2>
+          <button class="modal-close" onclick="closeAgesModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>🎯 Perfect for All Skill Levels</strong></p>
+          <p>
+            No prior experience required! Complete beginners welcome. We teach
+            from scratch.
+          </p>
+
+          <p><strong>👧 Age-Appropriate Training</strong></p>
+          <p>
+            Program designed specifically for young learners aged 8-16 years:
+          </p>
+          <p>
+            • Younger kids (8-10): Basic flying and introduction to technology
+          </p>
+          <p>
+            • Middle kids (11-13): Advanced skills and competitive activities
+          </p>
+          <p>
+            • Older kids (14-16): Expert techniques and leadership opportunities
+          </p>
+
+          <p><strong>👨‍👩‍👧‍👦 Family-Friendly Environment</strong></p>
+          <p>
+            Safe, supervised space where parents can observe and participate in
+            activities.
+          </p>
+
+          <p><strong>🛡️ Safety First</strong></p>
+          <p>
+            All activities supervised by trained professionals with safety gear
+            and protocols.
+          </p>
+
+          <p><strong>🏫 Educational & Fun</strong></p>
+          <p>
+            Learn STEM concepts (Science, Technology, Engineering, Math) while
+            having incredible fun!
+          </p>
+
+          <p><strong>👥 Make Friends</strong></p>
+          <p>
+            Connect with other young drone enthusiasts, build teamwork skills,
+            and lasting friendships.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeAgesModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

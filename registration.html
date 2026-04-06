@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration - Drone Camp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span
+            class="logo-text"
+            onclick="
+              window.open('https://sparkle-bot.vercel.app', '_blank');
+              return false;
+            ">
+            <img src="logo.jpg" alt="Logo" class="logo-img" />
+          </span>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="events.html" class="nav-link">Events</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="venue.html" class="nav-link">Venue</a></li>
+          <li>
+            <a
+              href="javascript:void(0)"
+              onclick="openSafetyModal()"
+              class="nav-link"
+              >🛡️ Safety</a
+            >
+          </li>
+        </ul>
+
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Registration Form Section -->
+    <div class="registration-container">
+      <div class="reg-form-wrapper">
+        <h2 class="form-title">✈️ Register Now</h2>
+        <p class="form-subtitle">
+          Join the Drone Flying Camp by
+          <a
+            href="javascript:void(0)"
+            onclick="window.open('https://sparkle-bot.vercel.app', '_blank')"
+            class="sparkle-link"
+            >Sparklebots</a
+          >
+        </p>
+
+        <form id="registrationForm" onsubmit="submitRegistration(event)">
+          <!-- Student Name -->
+          <div class="form-group">
+            <label for="name">👤 Full Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              required />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">📧 Email Address *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your.email@example.com"
+              required />
+          </div>
+
+          <!-- Phone & Age Row -->
+          <div class="form-group-row">
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone">📱 Phone Number *</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="9876543210"
+                maxlength="10"
+                onkeyup="formatPhoneNumber(this)"
+                required />
+            </div>
+
+            <!-- Age -->
+            <div class="form-group">
+              <label for="age">🎂 Your Age *</label>
+              <select id="age" name="age" required>
+                <option value="">Select your age</option>
+                <option value="8">8 years</option>
+                <option value="9">9 years</option>
+                <option value="10">10 years</option>
+                <option value="11">11 years</option>
+                <option value="12">12 years</option>
+                <option value="13">13 years</option>
+                <option value="14">14 years</option>
+                <option value="15">15 years</option>
+                <option value="16">16 years</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Guardian Name -->
+          <div class="form-group">
+            <label for="guardian">👨‍👩‍👦 Guardian/Parent Name *</label>
+            <input
+              type="text"
+              id="guardian"
+              name="guardian"
+              placeholder="Parent/Guardian's name"
+              required />
+          </div>
+
+          <!-- Batch Selection -->
+          <div class="form-group">
+            <label for="batch">⏰ Preferred Batch *</label>
+            <select id="batch" name="batch" required>
+              <option value="">Select your preferred batch</option>
+              <option value="B1">B1: 9:00 AM - 11:00 AM</option>
+              <option value="B2">B2: 4:00 PM - 6:00 PM</option>
+              
+            </select>
+          </div>
+
+          <!-- School Name -->
+          <div class="form-group">
+            <label for="school">🏫 School Name (Optional)</label>
+            <input
+              type="text"
+              id="school"
+              name="school"
+              placeholder="Your school name" />
+          </div>
+
+
+
+
+
+          <!-- Camp Info Summary -->
+          <div
+            class="info-section"
+            style="
+              background: rgba(0, 234, 255, 0.08);
+              border-left-color: var(--golden);
+              margin: 1.5rem 0;
+            ">
+            <h4 style="color: var(--golden); margin-bottom: 1rem">
+              📋 Camp Information
+            </h4>
+            <p>📅 <strong>Dates:</strong> 20-24 April 2026</p>
+            <p>⏱️ <strong>Duration:</strong> 2 Hours per Day (5 Days)</p>
+            <p>📍 <strong>Venue:</strong> Eklavya Sparklebots Robotics Centre , Kothrud, Pune</p>
+            <p>👥 <strong>Age Group:</strong> 8-16 Years</p>
+            <div style="background: rgba(255, 215, 0, 0.15); padding: 1rem; border-radius: 8px; margin-top: 1rem; border-left: 4px solid var(--golden);">
+              <p style="margin: 0.5rem 0; color: var(--golden); font-weight: 600;">💰 Registration Fee Information</p>
+              <p style="margin: 0.5rem 0; color: var(--text-light);"><strong>✨ The Program is Completely subsidies by 90%!</strong></p>
+              <p style="margin: 0.5rem 0; color: var(--text-light);"><strong>₹500 Registration Charge:</strong> To confirm and book your seat</p>
+              <p style="margin: 0.5rem 0; color: var(--text-light);">📱 <strong>Payment Method:</strong> Scan the QR code or click the UPI link below</p>
+              <p style="margin: 0.5rem 0; color: var(--text-light);">💳 <strong>UPI ID:</strong> <a href="upi://pay?pa=vinaykunwar@ptyes&pn=SparklebotsDroneCamp&amt=500&tr=DroneRegistration&tn=DroneCampRegistrationFee" style="color: var(--neon-blue); text-decoration: none; font-weight: bold;">vinaykunwar@ptyes</a></p>
+              <div style="margin-top: 1rem; text-align: center;">
+                <p style="margin: 0.5rem 0; font-size: 0.9rem; color: var(--text-gray);">📲 Scan QR Code:</p>
+                <img src="upilogo.jpeg" alt="UPI QR Code" style="max-width: 250px; width: 100%; border-radius: 8px; margin-top: 0.5rem;">
+              </div>
+            </div>
+            <div
+              style="
+                margin-top: 1.5rem;
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+              ">
+              <button
+                type="button"
+                onclick="getDirections()"
+                class="btn btn-primary"
+                style="flex: 1; min-width: 150px">
+                🗺️ Get Directions
+              </button>
+              <a
+                href="venue.html"
+                class="btn btn-secondary"
+                style="
+                  flex: 1;
+                  min-width: 150px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                📍 View Full Venue Info
+              </a>
+            </div>
+          </div>
+
+          <!-- Terms & Conditions -->
+          <div class="form-group">
+            <label
+              for="terms"
+              style="display: flex; align-items: center; gap: 0.5rem">
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                style="width: auto; cursor: pointer"
+                required />
+              <span>I agree to the terms and conditions *</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">
+            ✅ Submit Registration
+          </button>
+
+          <!-- WhatsApp Link -->
+          <div style="text-align: center; margin-top: 1.5rem">
+            <p style="color: var(--text-gray); margin-bottom: 1rem">
+              Have questions? Contact us
+            </p>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="openWhatsApp()"
+              style="width: 100%">
+              💬 Chat on WhatsApp
+            </button>
+          </div>
+        </form>
+
+        <!-- After Submit Message -->
+        <div
+          id="successMessage"
+          style="
+            display: none;
+            background: rgba(37, 211, 102, 0.2);
+            border: 2px solid #25d366;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 2rem;
+          ">
+          <h3 style="color: #25d366; margin-bottom: 1rem">
+            ✅ Registration Successful!
+          </h3>
+          <p style="color: var(--text-light)">
+            We will contact you within 24 hours to confirm your registration.
+          </p>
+          <p
+            style="
+              color: var(--text-gray);
+              font-size: 0.9rem;
+              margin-top: 1rem;
+            ">
+            Confirmation details will be sent to your email and phone number.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 0">
+      <p>
+        &copy; 2026 <span class="sparkle">Sparklebots</span> - Drone
+        Flying Camp
+      </p>
+      <p>✨ Program is Completely subsidies by 90% fees | Registration Fee: ₹500 (Scan QR & Pay via UPI to confirm)</p>      <div style=\"margin-top: 0.5rem; font-size: 0.85rem;\">
+        <p>📞 Contact: 8446630300 | 8446767555 | 8446767999 | 8446767222</p>
+        <p>📧 Email: hellosparklebots.com</p>
+      </div>    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+      <a href="registration.html" class="fab fab-register" title="Register Now">
+        <span class="fab-icon">📝</span>
+        <span class="fab-label">Register</span>
+      </a>
+      <button
+        class="fab fab-whatsapp"
+        onclick="openWhatsApp()"
+        title="Chat on WhatsApp">
+        <span class="fab-icon">💬</span>
+        <span class="fab-label">WhatsApp</span>
+      </button>
+      <a href="tel:8446767555" class="fab fab-phone" title="Call Us">
+        <span class="fab-icon">📞</span>
+        <span class="fab-label">Call</span>
+      </a>
+    </div>
+
+    <!-- Safety Protocols Modal -->
+    <div id="safetyModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">🛡️ Safety Protocols</h2>
+          <button class="modal-close" onclick="closeSafetyModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            ✅
+            <strong>All activities supervised by trained professionals</strong>
+          </p>
+          <p>
+            Our experienced trainers ensure complete supervision throughout all
+            drone flying activities.
+          </p>
+
+          <p>✅ <strong>Regular sanitization of equipment and areas</strong></p>
+          <p>
+            All drones and equipment are thoroughly sanitized before and after
+            use to maintain hygiene standards.
+          </p>
+
+          <p>✅ <strong>First aid support available on-site</strong></p>
+          <p>
+            Certified first aid personnel are present at all times during the
+            camp.
+          </p>
+
+          <p>
+            ✅ <strong>All participants wear safety gear when flying</strong>
+          </p>
+          <p>
+            Safety helmets and protective gear are mandatory for all
+            participants during drone operations.
+          </p>
+
+          <p>✅ <strong>Safe distance maintained during activities</strong></p>
+          <p>
+            All activities are conducted in designated safe zones with proper
+            distance maintained from spectators.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button onclick="openWhatsApp()">💬 Ask Questions</button>
+          <button onclick="closeSafetyModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Camp Info Modal -->
+    <div id="campInfoModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">🚁 Camp Information</h2>
+          <button class="modal-close" onclick="closeCampInfoModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>📅 Duration:</strong> 5 Days (20-24 April 2026)</p>
+          <p>
+            Intensive hands-on training program for young drone enthusiasts.
+          </p>
+
+          <p><strong>⏰ Daily Duration:</strong> 2 Hours per Day</p>
+          <p>Flexible batch timings available:</p>
+          <p>• Batch 1: 9:00 AM - 11:00 AM</p>
+          <p>• Batch 2: 4:00 PM - 6:00 PM</p>
+
+          <p><strong>💰 Registration Fee:</strong> ₹500 (pay to the scanner and upi to confirm your seat)</p>
+          <p>
+            The fee is completely FREE - only ₹500 registration charge to be
+            paid Through Scanner / upi id.
+          </p>
+
+          <p><strong>👥 Batch Size:</strong> Maximum 20 students per batch</p>
+          <p>Trainer ensures that every student gets professional and personalized attention.</p>
+
+          <p><strong>👥 Age Group:</strong> 8-16 Years</p>
+          <p>
+            Suitable for all age groups within this range, no prior experience
+            required.
+          </p>
+
+          <p>
+            <strong>📑 Venue:</strong> Eklavya Sparklebots Robotics Centre , DP Road, Kothrud, Pune
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeCampInfoModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert Certificate Modal -->
+    <div id="certificateModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">🏆 Expert Certificate</h2>
+          <button class="modal-close" onclick="closeCertificateModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p><strong>📜 Professional Recognition</strong></p>
+          <p>After successfully completing the 5-day camp, every participant receives an official drone flying certificate from expert trainers.</p>
+          
+          <p><strong>✅ Certificate Benefits</strong></p>
+          <p>This certificate is recognized and can be added to your portfolio, resume, or academic profile.</p>
+          
+          <p><strong>🎓 Proof of Achievement</strong></p>
+          <p>The certificate validates your:</p>
+          <p>• Basic drone flying skills and knowledge</p>
+          <p>• Safety protocol understanding</p>
+          <p>• Technical proficiency with modern drones</p>
+          <p>• Completion of structured training program</p>
+          
+          <p><strong>👴‍👼 Issued by Experts</strong></p>
+          <p>All certificates are signed and issued by our certified professional trainers with years of industry experience.</p>
+          
+          <p><strong>🌟 Career Building</strong></p>
+          <p>This certification can help you in:</p>
+          <p>• School/college projects and competitions</p>
+          <p>• Future drone pilot certifications</p>
+          <p>• Building a foundation for a career in drone technology</p>
+          <p>• Demonstrating commitment to learning new skills</p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1;">
+            <button style="width: 100%;">📝 Register Now</button>
+          </a>
+          <button onclick="closeCertificateModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert Trainers Modal -->
+    <div id="trainersModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">👨‍🏫 Expert Trainers</h2>
+          <button class="modal-close" onclick="closeTrainersModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>👨‍🎓 Professional & Experienced</strong></p>
+          <p>
+            Our trainers have years of industry experience in drone technology
+            and aviation.
+          </p>
+
+          <p><strong>🎯 Specialized Training</strong></p>
+          <p>
+            Each trainer is specialized in different aspects of drone flying:
+          </p>
+          <p>• Flight dynamics and control</p>
+          <p>• Safety protocols and emergency procedures</p>
+          <p>• Advanced maneuvers and competitions</p>
+          <p>• Technical knowledge and maintenance</p>
+
+          <p><strong>🏆 Certified Professionals</strong></p>
+          <p>
+            All trainers are certified in drone operations and emergency
+            response.
+          </p>
+
+          <p><strong>👥 Personalized Attention</strong></p>
+          <p>
+            1:8 trainer-to-student ratio ensures each participant gets dedicated
+            guidance.
+          </p>
+
+          <p><strong>💡 Teaching Excellence</strong></p>
+          <p>
+            Passionate educators dedicated to making learning fun and memorable
+            for young pilots.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeTrainersModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hands-On Experience Modal -->
+    <div id="handsOnModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">✋ Hands-On Experience</h2>
+          <button class="modal-close" onclick="closeHandsOnModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>🚁 Extensive Flight Time</strong></p>
+          <p>
+            Every participant gets real hands-on flying time with modern drones
+            - not just theory!
+          </p>
+
+          <p><strong>🎮 Learn by Doing</strong></p>
+          <p>Progressive training from basic controls to advanced maneuvers:</p>
+          <p>• Hover and basic movement</p>
+          <p>• Forward, backward, and lateral flight</p>
+          <p>• Advanced tricks and stunts</p>
+          <p>• Precision flying and competitions</p>
+
+          <p><strong>🏁 Live Competitions</strong></p>
+          <p>
+            Participate in exciting daily challenges, obstacle courses, and
+            drone racing events.
+          </p>
+
+          <p><strong>📱 Modern Equipment</strong></p>
+          <p>
+            Fly cutting-edge drones with cameras, stabilizers, and advanced
+            sensors.
+          </p>
+
+          <p><strong>🎓 Practical Knowledge</strong></p>
+          <p>
+            Learn maintenance, troubleshooting, and technical aspects through
+            hands-on practice.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeHandsOnModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ages 8-16 Modal -->
+    <div id="agesModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">👥 Ages 8-16 | Family Friendly</h2>
+          <button class="modal-close" onclick="closeAgesModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>🎯 Perfect for All Skill Levels</strong></p>
+          <p>
+            No prior experience required! Complete beginners welcome. We teach
+            from scratch.
+          </p>
+
+          <p><strong>👧 Age-Appropriate Training</strong></p>
+          <p>
+            Program designed specifically for young learners aged 8-16 years:
+          </p>
+          <p>
+            • Younger kids (8-10): Basic flying and introduction to technology
+          </p>
+          <p>
+            • Middle kids (11-13): Advanced skills and competitive activities
+          </p>
+          <p>
+            • Older kids (14-16): Expert techniques and leadership opportunities
+          </p>
+
+          <p><strong>👨‍👩‍👧‍👦 Family-Friendly Environment</strong></p>
+          <p>
+            Safe, supervised space where parents can observe and participate in
+            activities.
+          </p>
+
+          <p><strong>🛡️ Safety First</strong></p>
+          <p>
+            All activities supervised by trained professionals with safety gear
+            and protocols.
+          </p>
+
+          <p><strong>🏫 Educational & Fun</strong></p>
+          <p>
+            Learn STEM concepts (Science, Technology, Engineering, Math) while
+            having incredible fun!
+          </p>
+
+          <p><strong>👥 Make Friends</strong></p>
+          <p>
+            Connect with other young drone enthusiasts, build teamwork skills,
+            and lasting friendships.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="registration.html" style="text-decoration: none; flex: 1">
+            <button style="width: 100%">📝 Register Now</button>
+          </a>
+          <button onclick="closeAgesModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

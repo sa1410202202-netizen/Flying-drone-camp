@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Direct Form Test - Drone Camp</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        color: #fff;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #00eaff;
+        margin-bottom: 30px;
+        font-size: 1.8em;
+      }
+
+      .section {
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(0, 234, 255, 0.2);
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #00eaff;
+        font-weight: 600;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        background: rgba(0, 234, 255, 0.1);
+        border: 2px solid rgba(0, 234, 255, 0.3);
+        color: #fff;
+        border-radius: 5px;
+        font-size: 1em;
+        font-family: Poppins;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #00eaff;
+        box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #00eaff 0%, #00d4ff 100%);
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0, 234, 255, 0.4);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .output {
+        background: #000;
+        border: 2px solid #00eaff;
+        color: #00ff00;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        font-family: monospace;
+        font-size: 0.9em;
+        min-height: 60px;
+        max-height: 300px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      .success {
+        background: rgba(0, 255, 100, 0.1);
+        border: 2px solid #00ff64;
+        color: #00ff64;
+      }
+
+      .error {
+        background: rgba(255, 0, 0, 0.1);
+        border: 2px solid #ff0000;
+        color: #ff6b6b;
+      }
+
+      .info {
+        background: rgba(0, 150, 255, 0.1);
+        border: 2px solid #0096ff;
+        color: #52bfff;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 0.95em;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🧪 Direct Form Test</h1>
+
+      <div class="info">
+        <strong>This is a minimal test form.</strong> It will submit your data
+        directly to Google Forms and show detailed logs.
+      </div>
+
+      <div class="section">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="9876543210"
+            maxlength="10"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label>Age *</label>
+          <select id="age" required>
+            <option value="">Select age</option>
+            <option value="8">8 years</option>
+            <option value="9">9 years</option>
+            <option value="10">10 years</option>
+            <option value="11">11 years</option>
+            <option value="12">12 years</option>
+            <option value="13">13 years</option>
+            <option value="14">14 years</option>
+            <option value="15">15 years</option>
+            <option value="16">16 years</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Guardian/Parent Name *</label>
+          <input
+            type="text"
+            id="guardian"
+            placeholder="Parent/Guardian name"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Batch *</label>
+          <select id="batch" required>
+            <option value="">Select batch</option>
+            <option value="B1">B1: 9:00 AM - 11:00 AM</option>
+            <option value="B2">B2: 4:00 PM - 6:00 PM</option>
+            <option value="either">Either (Flexible)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>School Name (Optional)</label>
+          <input type="text" id="school" placeholder="Your school name" />
+        </div>
+
+        <button onclick="submitTest()">🚀 SUBMIT & TEST</button>
+
+        <div id="output" class="output" style="display: none"></div>
+      </div>
+    </div>
+
+    <script>
+      function submitTest() {
+        const output = document.getElementById("output");
+        output.style.display = "block";
+        output.className = "output";
+
+        let log = "🧪 FORM SUBMISSION TEST\n";
+        log += "========================\n\n";
+
+        // Get values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const age = document.getElementById("age").value;
+        const guardian = document.getElementById("guardian").value.trim();
+        const batch = document.getElementById("batch").value;
+        const school = document.getElementById("school").value.trim();
+
+        log += "📝 STEP 1: Reading form values...\n";
+        log += `  Name: ${name}\n`;
+        log += `  Email: ${email}\n`;
+        log += `  Phone: ${phone}\n`;
+        log += `  Age: ${age}\n`;
+        log += `  Guardian: ${guardian}\n`;
+        log += `  Batch: ${batch}\n`;
+        log += `  School: ${school}\n\n`;
+
+        // Validate
+        if (!name || !email || !phone || !age || !guardian || !batch) {
+          log += "❌ VALIDATION FAILED:\n";
+          if (!name) log += "  - Name is empty\n";
+          if (!email) log += "  - Email is empty\n";
+          if (!phone) log += "  - Phone is empty\n";
+          if (!age) log += "  - Age is not selected\n";
+          if (!guardian) log += "  - Guardian is empty\n";
+          if (!batch) log += "  - Batch is not selected\n";
+          output.innerHTML = log;
+          output.className = "output error";
+          return;
+        }
+
+        log += "✅ Validation passed!\n\n";
+        log += "📤 STEP 2: Preparing to send...\n";
+        log += "Entry IDs being used:\n";
+        log += "  1218213551 → Name\n";
+        log += "  1231877861 → Email\n";
+        log += "  256641189 → Phone\n";
+        log += "  1056289523 → Age\n";
+        log += "  637270378 → Guardian\n";
+        log += "  1304502194 → Batch\n";
+        log += "  926845933 → School\n\n";
+        log += "⏳ Sending to Google Forms...\n";
+
+        output.innerHTML = log;
+
+        // Create URLSearchParams with NEW entry IDs
+        const data = new URLSearchParams({
+          "entry.1218213551": name,
+          "entry.1231877861": email,
+          "entry.256641189": phone,
+          "entry.1056289523": age,
+          "entry.637270378": guardian,
+          "entry.1304502194": batch,
+          "entry.926845933": school,
+        });
+
+        const formURL =
+          "https://docs.google.com/forms/d/e/1FAIpQLSeIJDJl2LcqNN4_lcGPDjloOQ5QOmPvX39OBZ9hM-_lgEkvzQ/formResponse";
+
+        // Send request
+        fetch(formURL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: data.toString(),
+        })
+          .then((response) => {
+            log += "✅ Request sent!\n\n";
+            log += "📊 STEP 3: What to do now:\n";
+            log += "1. Wait 30-60 seconds\n";
+            log += "2. Open Google Sheet:\n";
+            log +=
+              "   https://docs.google.com/spreadsheets/d/1xsrrF_rk-2xkzRyVyEzwHhMZX_K4TYZxz1lHA3MZI5M/\n";
+            log += "3. Check for new data appearing\n";
+            log += "4. Look for new row with:\n";
+            log += `   Name: ${name}\n`;
+            log += `   Email: ${email}\n`;
+            log += "5. If data appears → ✅ WORKING!\n";
+            log += "   If nothing appears → entry IDs wrong\n";
+
+            output.innerHTML = log;
+            output.className = "output success";
+            console.log("✅ Form sent successfully");
+
+            // Also log to browser console
+            console.log("Data sent:", {
+              name,
+              email,
+              phone,
+              age,
+              guardian,
+              batch,
+              school,
+            });
+          })
+          .catch((error) => {
+            log += `❌ Error: ${error.message}\n`;
+            log += "(But data may still have been sent due to no-cors)\n";
+            output.innerHTML = log;
+            output.className = "output error";
+            console.error("Error:", error);
+          });
+      }
+
+      // Log when page loads
+      console.log("🧪 Test form loaded - ready to submit");
+    </script>
+  </body>
+</html>
